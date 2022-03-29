@@ -10,11 +10,13 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { HttpClientModule } from "@angular/common/http";
 
 import { MainMenuComponent } from "./main-menu/main-menu.component";
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
