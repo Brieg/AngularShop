@@ -17,17 +17,4 @@ export class ProductService {
   callApi(): Observable<any> {
     return this.httpClient.get('https://product-api2.herokuapp.com/api/v1/products')
   }
-
-  private url = "https://jsonplaceholder.typicode.com/todos";
-
-  getList(): Promise<any> {
-    const url = `${this.url}`;
-    return this.httpClient.get(url)
-      .toPromise()
-      .catch(this.handleError);
-  }
-  // handler for error in URL
-  private handleError(error: any): Promise<any> {
-    return Promise.reject(error.message || error);
-  }
 }
