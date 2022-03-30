@@ -1,16 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
-import { HttpClient } from "@angular/common/http";
-
 import { PageEvent } from "@angular/material/paginator";
-
-export interface Product {
-  name: String;
-  price: String;
-  category: String;
-  img: String;
-  description: String;
-}
+import { IProduct } from "../interfaces/product";
+import { ProductService } from "../services/product/product.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-product-list",
@@ -20,33 +13,20 @@ export interface Product {
 export class ProductListComponent implements OnInit {
 
   // Pagination
-  length = 30; //gather full length from RXJS response
-  pageSize = 3;
+  length: number = 30;
+  pageSize: number = 3;
   pageSizeOptions: number[] = [this.pageSize, this.pageSize * 2];
 
   // MatPaginator Output
   pageEvent: PageEvent | undefined;
-  products: Product[] = [];
+  products: Observable<IProduct[]> | null = null;
 
   constructor(
-    private httpClient: HttpClient
-  ) {
+    private productService: ProductService) {
   }
 
   ngOnInit(): void {
-    this.getProducts()
+    this.products = this.productService.callApi()
   }
-
-  getProducts() {
-    this.httpClient.get("https://product-api2.herokuapp.com/api/v1/products")
-      .subscribe(products => {
-        this.products = Object.values(products);
-
-        if(this.products.length) {
-          this.length = this.products.length;
-        }
-      });
-  }
-
 
 }
