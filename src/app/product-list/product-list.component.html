@@ -1,7 +1,11 @@
-<mat-grid-list cols="3" rowHeight="40vh" MatSort>
+<mat-grid-list cols="4" rowHeight="42vh">
+  <mat-grid-tile rowspan="2">
+    <app-product-filter></app-product-filter>
+  </mat-grid-tile>
   <mat-grid-tile *ngFor="let product of paginationProduct">
     <mat-card>
       <mat-card-title>{{product.name}}</mat-card-title>
+      {{product.category}}
       <img mat-card-image style="width: 300px; height: 200px" src="{{product.img}}" alt="Photo of a Shiba Inu">
       <mat-card-subtitle>{{product.price}} $</mat-card-subtitle>
       <mat-card-actions>

@@ -11,12 +11,14 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { MainMenuComponent } from "./main-menu/main-menu.component";
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainMenuComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductFilterComponent
   ],
   imports: [
     BrowserModule,

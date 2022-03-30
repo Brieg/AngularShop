@@ -15,6 +15,6 @@ export class ProductService {
   }
 
   getProducts(): Observable<any> {
-    return this.httpClient.get('https://product-api2.herokuapp.com/api/v1/products')
+    return this.httpClient.get('https://product-api2.herokuapp.com/api/v1/products');
   }
 }
