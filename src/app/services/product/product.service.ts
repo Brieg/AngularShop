@@ -14,7 +14,7 @@ export class ProductService {
   constructor(private httpClient: HttpClient) {
   }
 
-  callApi(): Observable<any> {
+  getProducts(): Observable<any> {
     return this.httpClient.get('https://product-api2.herokuapp.com/api/v1/products')
   }
 }

@@ -27,10 +27,10 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.callApi().subscribe(data => {
-      this.products = data;
-      this.pageLength = data.length;
-      this.paginationProduct = data.slice(((0 + 1) - 1) * this.pageSize).slice(0, this.pageSize);
+    this.productService.getProducts().subscribe(products => {
+      this.products = products;
+      this.pageLength = products.length;
+      this.paginationProduct = products.slice(((0 + 1) - 1) * this.pageSize).slice(0, this.pageSize);
     })
   }
 
