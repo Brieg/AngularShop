@@ -1,6 +1,18 @@
 <mat-grid-list cols="4" rowHeight="42vh">
   <mat-grid-tile rowspan="2">
-    <app-product-filter></app-product-filter>
+    <mat-selection-list [multiple]="false" (selectionChange)="selectionChange($event)">
+      <h2 class="md-display-2">Filters</h2>
+      <mat-divider></mat-divider>
+      <mat-list-option *ngFor="let category of productsCategory" [value]="category">
+        {{category}}
+      </mat-list-option>
+      <button mat-raised-button color="warn">
+        <mat-icon matBadgeColor="warn">clear_all</mat-icon>
+        Clear
+      </button>
+    </mat-selection-list>
+
+
   </mat-grid-tile>
   <mat-grid-tile *ngFor="let product of paginationProduct">
     <mat-card>
