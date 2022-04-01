@@ -1,0 +1,38 @@
+<mat-grid-list cols="4" rowHeight="42vh">
+  <mat-grid-tile rowspan="2">
+    <mat-selection-list [multiple]="false" (selectionChange)="selectionChange($event)">
+      <h2 class="md-display-2">Filters</h2>
+      <mat-divider></mat-divider>
+      <mat-list-option *ngFor="let category of productsCategory" [value]="category">
+        {{category}}
+      </mat-list-option>
+      <button mat-raised-button color="warn">
+        <mat-icon matBadgeColor="warn">clear_all</mat-icon>
+        Clear
+      </button>
+    </mat-selection-list>
+
+
+  </mat-grid-tile>
+  <mat-grid-tile *ngFor="let product of paginationProduct">
+    <mat-card>
+      <mat-card-title>{{product.name}}</mat-card-title>
+      {{product.category}}
+      <img mat-card-image style="width: 300px; height: 200px" src="{{product.img}}" alt="Photo of a Shiba Inu">
+      <mat-card-subtitle>{{product.price}} $</mat-card-subtitle>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">
+          <mat-icon matBadgeColor="warn">add_shopping_cart</mat-icon>
+          Add to cart
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-paginator
+  [length]="pageLength"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="OnPaginate($event)">
+</mat-paginator>
