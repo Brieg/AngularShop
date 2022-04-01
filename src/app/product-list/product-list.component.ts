@@ -4,7 +4,7 @@ import { PageEvent } from "@angular/material/paginator";
 
 import { IProduct } from "../interfaces/product";
 import { ProductService } from "../services/product/product.service";
-import { MatListOption, MatSelectionListChange } from "@angular/material/list";
+import { MatSelectionListChange } from "@angular/material/list";
 
 
 @Component({
@@ -14,8 +14,6 @@ import { MatListOption, MatSelectionListChange } from "@angular/material/list";
   providers: [ProductService]
 })
 export class ProductListComponent implements OnInit {
-
-
 
   // Pagination
   pageLength: number = 0;
@@ -27,7 +25,6 @@ export class ProductListComponent implements OnInit {
   products: IProduct[] = [];
   paginationProduct: IProduct[] = [];
 
-  public selectedCategory: string = "";
   public productsCategory: String[] = [];
   filteredProduct: IProduct[] = []
 

@@ -1,0 +1,26 @@
+<mat-grid-list *ngIf="product" cols="2" rowHeight="4.5:1">
+  <mat-grid-tile colspan="2">
+    <h1 mat-h1>{{ product.name }}</h1>
+    <mat-divider></mat-divider>
+  </mat-grid-tile>
+  <mat-grid-tile rowspan="2" class="product-page-image">
+    <img src="{{product.img}}" alt="{{product.name}}">
+  </mat-grid-tile>
+  <mat-grid-tile>
+    {{ product.description }}
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="example-button-container">
+      <button mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
+        <p>{{ product.price }} $</p>
+      </button>
+    </div>
+
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <button mat-raised-button color="primary">
+      <mat-icon matBadgeColor="warn">add_shopping_cart</mat-icon>
+      Add to cart
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>
