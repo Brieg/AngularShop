@@ -1,4 +1,4 @@
-<mat-grid-list *ngIf="product" cols="2" rowHeight="4.5:1">
+<mat-grid-list *ngIf="product" cols="2" rowHeight="22vh">
   <mat-grid-tile colspan="2">
     <h1 mat-h1>{{ product.name }}</h1>
     <mat-divider></mat-divider>
@@ -17,8 +17,8 @@
     </div>
   </mat-grid-tile>
   <mat-grid-tile colspan="2">
-    <button mat-raised-button color="primary">
-      <mat-icon matBadgeColor="warn">add_shopping_cart</mat-icon>
+    <button (click)="addToCart(product)" mat-raised-button color="primary">
+      <mat-icon  matBadgeColor="warn">add_shopping_cart</mat-icon>
       Add to cart
     </button>
   </mat-grid-tile>

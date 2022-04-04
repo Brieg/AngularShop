@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Cart</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+  <mat-list>
+    <mat-list-item *ngFor="let cartProduct of data.products">
+      <img mat-list-avatar src="{{cartProduct.img}}" alt="{{cartProduct.name}}" />
+      <div mat-line>{{cartProduct.name}}</div>
+      <div mat-line>{{cartProduct.category}}</div>
+      <div mat-line>{{cartProduct.count}} x {{cartProduct.price}} $</div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <button (click)="closeDialog()"
+          mat-mini-fab color="accent"
+          aria-label="Close your cart"
+          matTooltip="Close your cart">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <button *ngIf="data.products.length"
+          (click)="clearData()"
+          mat-mini-fab color="warn"
+          aria-label="Clear your cart"
+          matTooltip="Clear your cart">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <button *ngIf="data.products.length"
+          mat-raised-button color="primary"
+          [mat-dialog-close]="data.products"
+          cdkFocusInitial>Proceed...
+  </button>
+
+</div>
