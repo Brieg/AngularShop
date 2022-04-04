@@ -19,7 +19,7 @@
            [routerLink]="['/product', product.id]">
         <mat-card-title>{{product.name}}</mat-card-title>
         {{product.category}}
-        <img mat-card-image style="width: 300px; height: 200px" src="{{product.img}}" alt="{{product.name}}">
+        <img mat-card-image class="product-list__image" src="{{product.img}}" alt="{{product.name}}">
         <mat-card-subtitle>{{product.price}}$</mat-card-subtitle>    </a>
         <mat-card-actions>
           <button mat-raised-button color="primary">
