@@ -12,25 +12,28 @@
       </button>
     </mat-selection-list>
 
-
   </mat-grid-tile>
   <mat-grid-tile *ngFor="let product of paginationProduct">
-    <mat-card>
-      <mat-card-title>{{product.name}}</mat-card-title>
-      {{product.category}}
-      <img mat-card-image style="width: 300px; height: 200px" src="{{product.img}}" alt="Photo of a Shiba Inu">
-      <mat-card-subtitle>{{product.price}} $</mat-card-subtitle>
-      <mat-card-actions>
-        <button mat-raised-button color="primary">
-          <mat-icon matBadgeColor="warn">add_shopping_cart</mat-icon>
-          Add to cart
-        </button>
-      </mat-card-actions>
-    </mat-card>
+      <mat-card>
+        <a [title]="product.name"
+           [routerLink]="['/product', product.id]">
+        <mat-card-title>{{product.name}}</mat-card-title>
+        {{product.category}}
+        <img mat-card-image class="product-list__image" src="{{product.img}}" alt="{{product.name}}">
+        <mat-card-subtitle>{{product.price}}$</mat-card-subtitle>    </a>
+        <mat-card-actions>
+          <button mat-raised-button color="primary">
+            <mat-icon matBadgeColor="warn">add_shopping_cart</mat-icon>
+            Add to cart
+          </button>
+        </mat-card-actions>
+      </mat-card>
+
   </mat-grid-tile>
 </mat-grid-list>
 
 <mat-paginator
+  [showFirstLastButtons]="true"
   [length]="pageLength"
   [pageSize]="pageSize"
   [pageSizeOptions]="pageSizeOptions"

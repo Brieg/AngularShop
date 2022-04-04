@@ -10,24 +10,26 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { HttpClientModule } from "@angular/common/http";
 
 import { MainMenuComponent } from "./main-menu/main-menu.component";
-import { ProductListComponent } from './product-list/product-list.component';
+import { ProductListComponent } from "./product-list/product-list.component";
+import { ProductPageComponent } from "./product-page/product-page.component";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MainMenuComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BrowserModule,
     FormsModule,
     HttpClientModule,
     MatNativeDateModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
