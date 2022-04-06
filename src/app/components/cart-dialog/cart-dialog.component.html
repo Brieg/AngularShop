@@ -2,7 +2,7 @@
 <mat-divider></mat-divider>
 <div mat-dialog-content>
   <mat-list>
-    <mat-list-item *ngFor="let cartProduct of data.products">
+    <mat-list-item *ngFor="let cartProduct of dialogData">
       <img mat-list-avatar src="{{cartProduct.img}}" alt="{{cartProduct.name}}" />
       <div mat-line>{{cartProduct.name}}</div>
       <div mat-line>{{cartProduct.category}}</div>
@@ -19,17 +19,16 @@
     <mat-icon>close</mat-icon>
   </button>
 
-  <button *ngIf="data.products.length"
-          (click)="clearData()"
+  <button *ngIf="dialogData.length"
+          (click)="clearCartData()"
           mat-mini-fab color="warn"
           aria-label="Clear your cart"
           matTooltip="Clear your cart">
     <mat-icon>delete</mat-icon>
   </button>
-  <button *ngIf="data.products.length"
+  <button *ngIf="dialogData.length"
           mat-raised-button color="primary"
-          [mat-dialog-close]="data.products"
+          [mat-dialog-close]="dialogData"
           cdkFocusInitial>Proceed...
   </button>
-
 </div>

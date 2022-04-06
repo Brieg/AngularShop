@@ -30,7 +30,7 @@ export class ProductPageComponent implements OnInit {
     })
   }
 
-  addToCart(product: IProduct) {
+  addToCart(product: IProduct): void {
     this.cartService.addToCart(product);
   }
 }

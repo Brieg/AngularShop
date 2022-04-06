@@ -25,7 +25,7 @@ export class CartService {
   }
 
 
-  addToCart(product: IProduct) {
+  public addToCart(product: IProduct) {
     this.items$.pipe(
       take(1),
       map((products) => {
@@ -38,11 +38,11 @@ export class CartService {
     ).subscribe();
   }
 
-  getProducts() {
+  public getProducts() {
     return this.itemsSubject.getValue();
   }
 
-  getSelectedProducts() {
+  public getSelectedProducts() {
     const products: IProduct[] = this.getProducts();
 
     return [...products.reduce((mapProducts, product) => {
@@ -54,11 +54,11 @@ export class CartService {
     }, new Map).values()];
   }
 
-  getItems() {
+  public getItems() {
     return this.items$;
   }
 
-  clearCart() {
+  public clearCart() {
     this.itemsSubject.next([]);
     localStorage.clear();
     this._snackBar.open("Your cart is clear", "X", {

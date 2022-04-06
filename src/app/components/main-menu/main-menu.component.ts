@@ -1,74 +1,36 @@
-import { Component, Inject, OnInit, Output } from "@angular/core";
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { Component, OnInit } from "@angular/core";
+import { Observable } from "rxjs";
 
 import { IProduct } from "../../interfaces/product";
 import { CartService } from "../../services/cart/cart.service";
-import { Observable } from "rxjs";
-
-export interface DialogData {
-  products: IProduct[];
-}
+import { CartDialogComponent } from "../cart-dialog/cart-dialog.component";
 
 @Component({
   selector: "app-main-menu",
   templateUrl: "./main-menu.component.html",
-  styleUrls: ["./main-menu.component.scss"]
+  styleUrls: ["./main-menu.component.scss"],
+  providers: [CartDialogComponent]
 })
 
 export class MainMenuComponent implements OnInit {
 
   productsInCarts: IProduct[] = [];
+  cartCount$: Observable<IProduct[]>;
+  pathSVG = "./../assets/logoSii.svg";
+  altLogo = "BRIEG Shop";
 
   constructor(
-    private dialog: MatDialog,
-    private cartService: CartService) {
-  }
-
-  cartCount$: Observable<IProduct[]>;
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: "350px",
-      data: { products: this.cartService.getSelectedProducts() }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });
+    private cartService: CartService,
+    // private dialogService: DialogService,
+    private cartDialogComponent: CartDialogComponent) {
   }
 
   ngOnInit(): void {
     this.cartCount$ = this.cartService.getItems();
+    this.productsInCarts = this.cartService.getSelectedProducts();
   }
 
-  clearCartData() {
-    this.cartService.clearCart();
-  }
-
-  pathSVG = "./../assets/logoSii.svg";
-  altLogo = "Sii Shop";
-}
-
-@Component({
-  selector: "dialog-overview-example-dialog",
-  templateUrl: "./cart-dialog.component.html",
-  providers: [MainMenuComponent]
-})
-export class DialogOverviewExampleDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    private mainMenu: MainMenuComponent,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {
-  }
-
-  closeDialog() {
-    this.dialogRef.close();
-  }
-
-  clearData() {
-    this.closeDialog();
-    this.mainMenu.clearCartData();
+  openDialog(): void {
+    this.cartDialogComponent.openDialog(this.productsInCarts);
   }
 }
-
